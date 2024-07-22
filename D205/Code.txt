@@ -1,0 +1,31 @@
+
+--command " "\\copy public.services (patient_id, services, overweight, arthritis, diabetes, hyperlipidemia, backpain, anxiety, allergic_rhinitis, reflux_esophagitis, asthma) FROM 'C:/Users/LabUser/Desktop/MSERVI~1.CSV' DELIMITER ',' CSV HEADER QUOTE '\"' ESCAPE '''';""
+
+
+-- Table: public.services
+DROP TABLE public.services;
+
+CREATE TABLE public.services
+(
+    patient_id varchar(50) NOT NULL,
+    services varchar(50),
+    overweight varchar(3),
+    arthritis varchar(3),
+    diabetes varchar(3),
+    hyperlipidemia varchar(3),
+    backpain varchar(3),
+    anxiety varchar(3),
+    allergic_rhinitis varchar(3),
+    reflux_esophagitis varchar(3),
+    asthma varchar(3),
+    CONSTRAINT services_pkey PRIMARY KEY (patient_id)
+	) 
+TABLESPACE pg_default;
+
+ALTER TABLE public.services
+    ADD FOREIGN KEY (patient_id)
+    REFERENCES public.patient (patient_id)
+    NOT VALID;
+	
+ALTER TABLE public.services
+    OWNER to postgres;
