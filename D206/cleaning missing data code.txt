@@ -1,0 +1,33 @@
+> colSums(is.na(c))
+                   X            CaseOrder          Customer_id          Interaction                 City                State 
+                   0                    0                    0                    0                    0                    0 
+              County                  Zip                  Lat                  Lng           Population                 Area 
+                   0                    0                    0                    0                    0                    0 
+            Timezone                  Job             Children                  Age            Education           Employment 
+                   0                    0                 2495                 2475                    0                    0 
+              Income              Marital               Gender                Churn   Outage_sec_perweek                Email 
+                2490                    0                    0                    0                    0                    0 
+            Contacts Yearly_equip_failure               Techie             Contract           Port_modem               Tablet 
+                   0                    0                 2477                    0                    0                    0 
+     InternetService                Phone             Multiple       OnlineSecurity         OnlineBackup     DeviceProtection 
+                   0                 1026                    0                    0                    0                    0 
+         TechSupport          StreamingTV      StreamingMovies     PaperlessBilling        PaymentMethod               Tenure 
+                 991                    0                    0                    0                    0                  931 
+       MonthlyCharge    Bandwidth_GB_Year                item1                item2                item3                item4 
+                   0                 1021                    0                    0                    0                    0 
+               item5                item6                item7                item8 
+                   0                    0                    0                    0 
+
+> vis_miss(c)
+
+c$Children[is.na(c$Children)]<-median(c$Children, na.rm = TRUE)
+--got rid of children na (Skewed distribution)
+c$Age[is.na(c$Age)]<-mean(c$Age, na.rm = TRUE)
+--- Age NA (uniform Distribution)
+
+c$Income[is.na(c$Income)]<-median(c$Income, na.rm = TRUE)
+----Income NA (Skewed distribution)
+ c$Tenure[is.na(c$Tenure)]<-median(c$Tenure, na.rm = TRUE)
+----Tenure(bimodal distribution)
+c$Bandwidth_GB_Year[is.na(c$Bandwidth_GB_Year)]<-median(c$Bandwidth_GB_Year, na.rm = TRUE)
+--Bandwith (bimodal distribution)
